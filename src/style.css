@@ -16,7 +16,7 @@ body {
     font-weight: 400;
     height: 100vh;
     color: #333;
-    background-image: linear-gradient(to top left, #753682 0%, #bf2e34 100%);
+    background-image: linear-gradient(to top left, #355d27 0%, #76ce58 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -59,7 +59,7 @@ main {
 .score {
     font-size: 8rem;
     font-weight: 300;
-    color: #c7365f;
+    color: #d35c5c;
     margin-bottom: auto;
 }
 
@@ -163,5 +163,5 @@ main {
 
 .player--winner .name {
     font-weight: 700;
-    color: #c7365f;
+    color: #bd4dbd;
 }
