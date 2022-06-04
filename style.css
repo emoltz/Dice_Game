@@ -148,7 +148,7 @@ main {
     outline: none;
 }
 
-.dice {
+.pigs {
     position: absolute;
     left: 50%;
     top: 16.5rem;
@@ -166,4 +166,6 @@ main {
     color: #335145;
 }
 
-.hidden
+.hidden{
+    display: none;
+}
