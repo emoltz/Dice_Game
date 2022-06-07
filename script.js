@@ -10,9 +10,33 @@ let player2TotalScore;
 //______________CURRENT SCORE
 let currentScore_player1 = document.getElementById('current--0');
 let currentScore_player2 = document.getElementById('current--1');
-const newGameButton = document.querySelector('.btn--new');
+
 let player1Name = document.getElementById('name--0');
 let player2Name = document.getElementById('name--1');
+
+//______________BUTTONS
+const newGameButton = document.querySelector('.btn--new');
+const rollButton = document.querySelector('.btn--roll');
+const holdButton = document.querySelector('.btn--hold');
+
+//______________Dice/Pigs
+const diceElement = document.querySelector('.pigs');
+
+
+
+//______________Roll
+function rollDice(){
+    // generate random roll
+    let dice = Math.trunc(Math.random() * 6);
+
+    // display dice
+
+
+    // check for rolled 1 -- if true, switch to next player
+
+
+}
+
 
 
 //______________FUNCTIONS
@@ -28,7 +52,7 @@ function changeName(name, player1){
 }
 
 function hidePigs(){
-
+    
 
 }
 
@@ -36,6 +60,7 @@ function init(){
 //set scores to 0
     player1TotalScore_el.textContent = String(0);
     player2TotalScore_el.textContent = String(0);
+    diceElement.classList.add('hidden')
     //// this changes player names:
     // let nameTemp = window.prompt("Enter Player1 Name", "Your Name")
     // changeName(nameTemp, true)
@@ -44,12 +69,12 @@ function init(){
 }
 
 
+//______________listeners
+newGameButton.addEventListener('click',init);
+rollButton.addEventListener('click',rollDice)
 
 
 //______________MAIN:
 
 init();
 
-
-//______________listeners
-newGameButton.addEventListener('click',init);
