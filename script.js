@@ -2,14 +2,13 @@
 //______________PLAYERS
 let player1Name = document.getElementById('name--0');
 let player2Name = document.getElementById('name--1');
-let player1Turn = true;
+let activePlayer = 0;
 
 //______________TOTAL SCORE
 const player1TotalScore_el = document.getElementById('score--0');
 const player2TotalScore_el = document.getElementById('score--1');
 
-let player1TotalScore;
-let player2TotalScore;
+const totalScores = [0,0];
 
 //______________CURRENT SCORE
 let currentScore_player1_element = document.getElementById('current--0');
@@ -42,11 +41,11 @@ function rollDice(){
     //TODO this would be a PIG OUT
     if(dice !== 1){
         currentScore += dice;
-        currentScore_player1_element.textContent = currentScore;
+        document.getElementById(`current--${activePlayer}`).textContent = currentScore;
 
     }
     else{
-        //switch to next player
+        activePlayer = activePlayer === 0 ? 1 : 0;
     }
 
 
