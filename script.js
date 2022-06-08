@@ -1,4 +1,8 @@
 'use strict';
+//______________PLAYERS
+let player1Name = document.getElementById('name--0');
+let player2Name = document.getElementById('name--1');
+let player1Turn = true;
 
 //______________TOTAL SCORE
 const player1TotalScore_el = document.getElementById('score--0');
@@ -8,11 +12,11 @@ let player1TotalScore;
 let player2TotalScore;
 
 //______________CURRENT SCORE
-let currentScore_player1 = document.getElementById('current--0');
-let currentScore_player2 = document.getElementById('current--1');
-
-let player1Name = document.getElementById('name--0');
-let player2Name = document.getElementById('name--1');
+let currentScore_player1_element = document.getElementById('current--0');
+let currentScore_player2_element = document.getElementById('current--1');
+let currentScore_player1;
+let currentScore_player2;
+let currentScore;
 
 //______________BUTTONS
 const newGameButton = document.querySelector('.btn--new');
@@ -27,12 +31,23 @@ const diceElement = document.querySelector('.pigs');
 //______________Roll
 function rollDice(){
     // generate random roll
-    let dice = Math.trunc(Math.random() * 6);
+    let dice = Math.trunc(Math.random() * 6 + 1);
 
     // display dice
-
+    console.log("roll: " + dice);
+    diceElement.classList.remove('hidden');
+    diceElement.src = `images/dice-${dice}.png`
 
     // check for rolled 1 -- if true, switch to next player
+    //TODO this would be a PIG OUT
+    if(dice !== 1){
+        currentScore += dice;
+        currentScore_player1_element.textContent = currentScore;
+
+    }
+    else{
+        //switch to next player
+    }
 
 
 }
@@ -61,6 +76,9 @@ function init(){
     player1TotalScore_el.textContent = String(0);
     player2TotalScore_el.textContent = String(0);
     diceElement.classList.add('hidden')
+    currentScore = 0;
+    currentScore_player1 = 0;
+    currentScore_player2 = 0;
     //// this changes player names:
     // let nameTemp = window.prompt("Enter Player1 Name", "Your Name")
     // changeName(nameTemp, true)
