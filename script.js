@@ -70,19 +70,26 @@ function hidePigs(){
 
 }
 
-function init(){
-//set scores to 0
-    player1TotalScore_el.textContent = String(0);
-    player2TotalScore_el.textContent = String(0);
-    diceElement.classList.add('hidden')
+function resetScores(){
     currentScore = 0;
-    currentScore_player1 = 0;
-    currentScore_player2 = 0;
+    currentScore_player1_element.textContent = String(currentScore);
+    currentScore_player2_element.textContent = String(currentScore);
+    player1TotalScore_el.textContent = String(currentScore);
+    player2TotalScore_el.textContent = String(currentScore);
+}
+
+function setPlayerNames(name1, name2){
     //// this changes player names:
     // let nameTemp = window.prompt("Enter Player1 Name", "Your Name")
     // changeName(nameTemp, true)
     // nameTemp = window.prompt("Enter Player2 Name", "Your Name");
     // changeName(nameTemp, false);
+}
+
+
+function init(){
+    diceElement.classList.add('hidden')
+    resetScores();
 }
 
 
