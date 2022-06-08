@@ -169,3 +169,10 @@ main {
 .hidden{
     display: none;
 }
+
+.highlighted{
+    /*color: crimson;*/
+    font-weight: bolder;
+    background-color: #55643a;
+    color: wheat;
+}

@@ -46,14 +46,26 @@ function rollDice(){
     }
     else{
         activePlayer = activePlayer === 0 ? 1 : 0;
+        switchActivePlayerColor();
     }
-
 
 }
 
-
-
 //______________FUNCTIONS
+
+function switchActivePlayerColor(){
+    if(activePlayer === 0){
+        player1Name.classList.add('highlighted')
+        player2Name.classList.remove('highlighted')
+        // change Player1
+    }
+    else{
+        //change player2
+        player1Name.classList.remove('highlighted')
+        player2Name.classList.add('highlighted')
+    }
+}
+
 
 function changeName(name, player1){
     if(player1 === true){
@@ -90,6 +102,7 @@ function setPlayerNames(name1, name2){
 function init(){
     diceElement.classList.add('hidden')
     resetScores();
+    switchActivePlayerColor();
 }
 
 
