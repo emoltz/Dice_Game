@@ -27,6 +27,7 @@ let currentScore;
 const newGameButton = document.querySelector('.btn--new');
 const rollButton = document.querySelector('.btn--roll');
 const holdButton = document.querySelector('.btn--hold');
+const renamePlayersButton = document.querySelector('.btn--rename');
 
 //______________Dice/Pigs
 const diceElement = document.querySelector('.pigs');
@@ -146,6 +147,9 @@ function hold() {
 newGameButton.addEventListener('click', init);
 rollButton.addEventListener('click', rollDice);
 holdButton.addEventListener('click', hold);
+renamePlayersButton.addEventListener('click',function(){
+
+})
 
 
 //______________MAIN:

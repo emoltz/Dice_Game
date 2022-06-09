@@ -132,6 +132,9 @@ main {
 .btn--new {
     top: 4rem;
 }
+.btn--rename{
+    top: 10rem;
+}
 .btn--roll {
     top: 39.3rem;
 }
