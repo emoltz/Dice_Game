@@ -34,24 +34,26 @@ const diceElement = document.querySelector('.pigs');
 
 //______________Roll
 function rollDice() {
-    // generate random roll
-    let dice = Math.trunc(Math.random() * 6 + 1);
+    if(playing){
+        // generate random roll
+        let dice = Math.trunc(Math.random() * 6 + 1);
 
-    // display dice
-    console.log("roll: " + dice);
-    diceElement.classList.remove('hidden');
-    diceElement.src = `images/dice-${dice}.png`
+        // display dice
+        console.log("roll: " + dice);
+        diceElement.classList.remove('hidden');
+        diceElement.src = `images/dice-${dice}.png`
 
-    // check for rolled 1 -- if true, switch to next player
-    //TODO this would be a PIG OUT
-    if (dice !== 1) {
-        currentScore += dice;
-        document.getElementById(`current--${activePlayer}`).textContent = currentScore;
+        // check for rolled 1 -- if true, switch to next player
+        if (dice !== 1) {
+            currentScore += dice;
+            document.getElementById(`current--${activePlayer}`).textContent = currentScore;
 
-    } else {
+        } else {
 
-        switchActivePlayer();
+            switchActivePlayer();
+        }
     }
+
 
 }
 
@@ -131,6 +133,7 @@ function hold() {
     if(totalScores[activePlayer] >= winningScore){
         document.querySelector(`.player--${activePlayer}`).classList.add('player--winner');
         document.querySelector(`.player--${activePlayer}`).classList.remove('player--active');
+        playing = false;
     }
 
     //switch to other player
