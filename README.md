@@ -1,4 +1,4 @@
-# A Simple Dice Game
+# Pass the Pigs Online
 A simple game with HTML and Javascript, meant for Javascript learning and practice.
 
 
