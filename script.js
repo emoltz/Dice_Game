@@ -1,14 +1,20 @@
 'use strict';
+
+const winningScore = 100;
+let playing = true;
+
 //______________PLAYERS
 let player1Name = document.getElementById('name--0');
 let player2Name = document.getElementById('name--1');
 let activePlayer = 0;
+const player1_el = document.querySelector('.player--0');
+const player2_el = document.querySelector('.player--1');
 
 //______________TOTAL SCORE
 const player1TotalScore_el = document.getElementById('score--0');
 const player2TotalScore_el = document.getElementById('score--1');
 
-const totalScores = [0,0];
+const totalScores = [0, 0];
 
 //______________CURRENT SCORE
 let currentScore_player1_element = document.getElementById('current--0');
@@ -26,9 +32,8 @@ const holdButton = document.querySelector('.btn--hold');
 const diceElement = document.querySelector('.pigs');
 
 
-
 //______________Roll
-function rollDice(){
+function rollDice() {
     // generate random roll
     let dice = Math.trunc(Math.random() * 6 + 1);
 
@@ -39,12 +44,12 @@ function rollDice(){
 
     // check for rolled 1 -- if true, switch to next player
     //TODO this would be a PIG OUT
-    if(dice !== 1){
+    if (dice !== 1) {
         currentScore += dice;
         document.getElementById(`current--${activePlayer}`).textContent = currentScore;
 
-    }
-    else{
+    } else {
+
         switchActivePlayer();
     }
 
@@ -52,39 +57,36 @@ function rollDice(){
 
 //______________FUNCTIONS
 
-function switchActivePlayer(){
-    activePlayer = activePlayer === 0 ? 1 : 0;
-    if(activePlayer === 0){
-        player1Name.classList.add('highlighted')
-        player2Name.classList.remove('highlighted')
-        // change Player1
-    }
-    else{
-        //change player2
-        player1Name.classList.remove('highlighted')
-        player2Name.classList.add('highlighted')
-    }
+function switchActivePlayer() {
     currentScore = 0;
     document.getElementById(`current--${activePlayer}`).textContent = currentScore;
+    activePlayer = activePlayer === 0 ? 1 : 0;
+
+    player1Name.classList.toggle('highlighted')
+    player2Name.classList.toggle('highlighted')
+
+    player1_el.classList.toggle('player--active')
+    player2_el.classList.toggle('player--active')
+
+
 }
 
 
-function changeName(name, player1){
-    if(player1 === true){
+function changeName(name, player1) {
+    if (player1 === true) {
         player1Name.textContent = name;
-    }
-    else{
+    } else {
         player2Name.textContent = name;
     }
 
 }
 
-function hidePigs(){
-    
+function hidePigs() {
+
 
 }
 
-function resetScores(){
+function resetScores() {
     currentScore = 0;
     currentScore_player1_element.textContent = String(currentScore);
     currentScore_player2_element.textContent = String(currentScore);
@@ -92,7 +94,7 @@ function resetScores(){
     player2TotalScore_el.textContent = String(currentScore);
 }
 
-function setPlayerNames(name1, name2){
+function setPlayerNames(name1, name2) {
     //// this changes player names:
     // let nameTemp = window.prompt("Enter Player1 Name", "Your Name")
     // changeName(nameTemp, true)
@@ -101,18 +103,46 @@ function setPlayerNames(name1, name2){
 }
 
 
-function init(){
+function init() {
     diceElement.classList.add('hidden')
     resetScores();
     activePlayer = 0;
     player1Name.classList.add('highlighted')
     player2Name.classList.remove('highlighted')
+
+    player1_el.classList.remove('player--winner');
+    player2_el.classList.remove('player--winner');
+    player1_el.classList.add('player--active');
+    player2_el.classList.remove('player--active')
+
+}
+
+function hold() {
+    //add current score to score of active player
+    totalScores[activePlayer] += currentScore;
+    console.log(totalScores[activePlayer])
+    if(activePlayer===0){
+        player1TotalScore_el.textContent = totalScores[activePlayer]
+    }
+    else{
+        player2TotalScore_el.textContent = totalScores[activePlayer];
+    }
+    // check if players score is over 100
+    if(totalScores[activePlayer] >= winningScore){
+        document.querySelector(`.player--${activePlayer}`).classList.add('player--winner');
+        document.querySelector(`.player--${activePlayer}`).classList.remove('player--active');
+    }
+
+    //switch to other player
+    switchActivePlayer();
+
 }
 
 
 //______________listeners
-newGameButton.addEventListener('click',init);
-rollButton.addEventListener('click',rollDice)
+newGameButton.addEventListener('click', init);
+rollButton.addEventListener('click', rollDice);
+holdButton.addEventListener('click', hold);
 
 
 //______________MAIN:
