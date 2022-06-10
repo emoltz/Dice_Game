@@ -1,4 +1,4 @@
-import anime from 'animejs/lib/anime.es';
-
-const anime = require('animejs');
-
+function myFunction(){
+    var popup = document.getElementById("myPopup");
+    popup.classList.toggle("show");
+}
