@@ -2,6 +2,17 @@
 
 const winningScore = 100;
 let playing = true;
+//______________PIG LOGIC
+/*
+
+ */
+
+
+
+
+
+
+
 
 //______________PLAYERS
 let player1Name = document.getElementById('name--0');
@@ -147,9 +158,9 @@ function hold() {
 newGameButton.addEventListener('click', init);
 rollButton.addEventListener('click', rollDice);
 holdButton.addEventListener('click', hold);
-renamePlayersButton.addEventListener('click',function(){
-
-})
+// renamePlayersButton.addEventListener('click',function(){
+//
+// })
 
 
 //______________MAIN:
