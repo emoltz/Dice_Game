@@ -4,6 +4,13 @@ console.log("Github link: " + "https://github.com/emoltz/Pass-The-Pigs");
 const winningScore = 100;
 let playing = true;
 
+const range1 = .349;
+const range2 = .6511;
+const range3 = .8751;
+const range4 = .9631;
+const range5 = .9932;
+const range6 = 1;
+
 
 
 //______________PLAYERS
@@ -86,38 +93,52 @@ function rollPigs(){
     let roll1 = (Math.random());
     let roll2 = (Math.random());
 
+    //______________________ROLL 1:
+    if (roll1 >= 0 && roll1 <= range1){
+        console.log("no dot!");
+    }
+    else if (roll1 > range1 && roll1 <= range2){
+        console.log("Dot!");
+    }
+    else if (roll1 > range2 && roll1 <= range3){
+        console.log("razorback");
+    }
+    else if (roll1 > range3 && roll1 <= range4){
+        console.log("trotter");
+    }
+    else if (roll1 > range4 && roll1 <= range5){
+        console.log("snouter");
+    }
+    else if (roll1 > range5 && roll1 <= range6){
+        console.log("Leaning jowler");
+    }
+    else if (roll1 > range6 && roll1 <= range7){
+        console.log("Oinker!!");
+    }
 
-    console.log("Pig Roll 1: " + roll1);
-    console.log("Pig Roll 2: " + roll2);
-
-
-    // switch (roll1){
-    //     case 1: //no dot
-    //
-    //         break;
-    //     case 2: //dot
-    //
-    //         break;
-    //     case 3: //back
-    //         break;
-    //     case 4: // Standing
-    //         break;
-    //     case 5: // snout
-    //         break;
-    //     case 6: // ear
-    //         break;
-    //     case 7: //touching the other pig
-    //         currentScore = 0;
-    //         changePlayersCurrentScore();
-    //         totalScores[activePlayer] = 0;
-    //         hold();
-    //         break;
-    //     default:
-    //         console.log("Pig roll error -- Math");
-    //         break;
-    // }
+    //______________________ROLL 2:
+    if (roll2 >= 0 && roll2 <= range1){
+        console.log("no dot!");
+    }
+    else if (roll2 > range1 && roll2 <= range2){
+        console.log("Dot!");
+    }
+    else if (roll2 > range2 && roll2 <= range3){
+        console.log("razorback");
+    }
+    else if (roll2 > range3 && roll2 <= range4){
+        console.log("trotter");
+    }
+    else if (roll2 > range4 && roll2 <= range5){
+        console.log("snouter");
+    }
+    else if (roll2 > range5 && roll2 <= range6){
+        console.log("Leaning jowler");
+    }
+    else if (roll2 > range6 && roll2 <= range7){
+        console.log("Oinker!!");
+    }
 }
-rollPigs();
 //______________FUNCTIONS
 
 function switchActivePlayer() {
