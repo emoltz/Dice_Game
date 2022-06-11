@@ -1,7 +1,7 @@
 # Pass the Pigs Online
 A simple game with HTML and Javascript, meant for Javascript learning and practice.
 
-# Upcoming Features
+# Upcoming Features and Known Issues
 1. [x] Pigs rather than dice
 2. [ ] Ability to rename players
 3. [ ] Mobile version
