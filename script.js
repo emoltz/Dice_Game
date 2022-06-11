@@ -90,27 +90,43 @@ function rollPigs(){
 
     if (sideCalc == 1){
         roll1PigDot = true;
-        console.log("Pig 1: dot!");
+        // console.log("Pig 1: dot!");
     }
     else{
-        console.log("Pig 1: no dot!");
+        // console.log("Pig 1: no dot!");
     }
     sideCalc = Math.trunc(Math.random() *2 + 1);
     if (sideCalc == 1){
         roll2PigDot = true;
-        console.log("Pig 2: dot!");
+        // console.log("Pig 2: dot!");
     }
     else{
-        console.log("Pig 2: no dot!");
+        // console.log("Pig 2: no dot!");
     }
 
-    pigRoll(roll1,roll1PigDot, roll2PigDot, pig1Element);
-    pigRoll(roll2,roll2PigDot,roll2PigDot, pig2Element);
+    //check for Pig Out
+    let pigOut = false;
+    if ((roll1PigDot == false && roll2PigDot == true) || (roll1PigDot == true && roll2PigDot == false)){
+        currentScore = 0;
+        changePlayersCurrentScore();
+        switchActivePlayer();
+        console.log("Pig out!");
+        pigOut = true;
+    }
+
+    if (!pigOut){
+        pigRoll(roll1,roll1PigDot, pig1Element);
+        pigRoll(roll2,roll2PigDot, pig2Element);
+    }
+    else{
+        pigOut = false;
+    }
+
 
 }
 //______________FUNCTIONS
 
-function pigRoll(roll, pigDot1, pigDot2, pigElement){
+function pigRoll(roll, pigDot1, pigElement){
 
     if (roll >= 0 && roll <= range2){
         //on side
@@ -123,18 +139,9 @@ function pigRoll(roll, pigDot1, pigDot2, pigElement){
         else{
             pigElement.src = `images/pig_nodot.png`;
         }
+        currentScore += 1;
+        changePlayersCurrentScore();
 
-        //check for Pig Out
-        if ((pigDot1 == false && pigDot2 == true) || (pigDot1 == true && pigDot2 == false)){
-            currentScore = 0;
-            changePlayersCurrentScore();
-            switchActivePlayer();
-            console.log("Pig out!");
-        }
-        else{
-            currentScore += 1;
-            changePlayersCurrentScore();
-        }
     }
     else if (roll > range2 && roll <= range3){
         // console.log("razorback");
