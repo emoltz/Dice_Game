@@ -75,7 +75,6 @@ function rollDice() {
 }
 
 //______________PIG LOGIC
-//Wrote this on iPad :)
 
 
 function rollPigs(){

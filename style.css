@@ -170,6 +170,11 @@ main {
     top: 200px;
     right: 20px;
 }
+.coffee{
+    position: absolute;
+    top: 750px;
+
+}
 
 .player--winner {
     background-color: #43bb19;
