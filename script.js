@@ -84,56 +84,95 @@ function rollPigs(){
     // let roll2 = Math.round(max / (Math.random() * max + min));
     let roll1 = (Math.random());
     let roll2 = (Math.random());
+    let sideCalc = Math.trunc(Math.random() *2 + 1);
+    let roll1PigDot = false;
+    let roll2PigDot = false;
 
-    //______________________ROLL 1:
-    if (roll1 >= 0 && roll1 <= range1){
-        console.log("no dot!");
-        pig1Element.src = `images/pig_nodot.png`;
+    if (sideCalc == 1){
+        roll1PigDot = true;
+        console.log("Pig 1: dot!");
     }
-    else if (roll1 > range1 && roll1 <= range2){
-        console.log("Dot!");
-        pig1Element.src = `images/pig_dot.png`;
+    else{
+        console.log("Pig 1: no dot!");
     }
-    else if (roll1 > range2 && roll1 <= range3){
-        console.log("razorback");
+    sideCalc = Math.trunc(Math.random() *2 + 1);
+    if (sideCalc == 1){
+        roll2PigDot = true;
+        console.log("Pig 2: dot!");
     }
-    else if (roll1 > range3 && roll1 <= range4){
-        console.log("trotter");
-    }
-    else if (roll1 > range4 && roll1 <= range5){
-        console.log("snouter");
-    }
-    else if (roll1 > range5 && roll1 <= range6){
-        console.log("Leaning jowler");
-    }
-    else if (roll1 > range6 && roll1 <= range7){
-        console.log("Oinker!!");
+    else{
+        console.log("Pig 2: no dot!");
     }
 
-    //______________________ROLL 2:
-    if (roll2 >= 0 && roll2 <= range1){
-        console.log("no dot!");
-    }
-    else if (roll2 > range1 && roll2 <= range2){
-        console.log("Dot!");
-    }
-    else if (roll2 > range2 && roll2 <= range3){
-        console.log("razorback");
-    }
-    else if (roll2 > range3 && roll2 <= range4){
-        console.log("trotter");
-    }
-    else if (roll2 > range4 && roll2 <= range5){
-        console.log("snouter");
-    }
-    else if (roll2 > range5 && roll2 <= range6){
-        console.log("Leaning jowler");
-    }
-    else if (roll2 > range6 && roll2 <= range7){
-        console.log("Oinker!!");
-    }
+    pigRoll(roll1,roll1PigDot, roll2PigDot, pig1Element);
+    pigRoll(roll2,roll2PigDot,roll2PigDot, pig2Element);
+
 }
 //______________FUNCTIONS
+
+function pigRoll(roll, pigDot1, pigDot2, pigElement){
+
+    if (roll >= 0 && roll <= range2){
+        //on side
+        // console.log("side");
+
+        if(pigDot1){
+            //dot is on
+            pigElement.src = `images/pig_dot.png`;
+        }
+        else{
+            pigElement.src = `images/pig_nodot.png`;
+        }
+
+        //check for Pig Out
+        if ((pigDot1 == false && pigDot2 == true) || (pigDot1 == true && pigDot2 == false)){
+            switchActivePlayer();
+            console.log("Pig out!");
+        }
+    }
+    else if (roll > range2 && roll <= range3){
+        // console.log("razorback");
+        if(pigDot1){
+            pigElement.src = `images/pig_dot_back.png`;
+        }
+        else{
+            pigElement.src = `images/pig_nodot_back.png`;
+        }
+    }
+    else if (roll > range3 && roll <= range4){
+        // console.log("trotter");
+        if(pigDot1){
+            //dot is on
+            pigElement.src = `images/pig_dot.png`;
+        }
+        else{
+            pigElement.src = `images/pig_nodot.png`;
+        }
+    }
+    else if (roll > range4 && roll <= range5){
+        // console.log("snouter");
+        if(pigDot1){
+            //dot is on
+            pigElement.src = `images/pig_dot_nose.png`;
+        }
+        else{
+            pigElement.src = `images/pig_nodot_nose.png`;
+        }
+    }
+    else if (roll > range5 && roll <= range6){
+        if(pigDot1){
+            //dot is on
+            pigElement.src = `images/pig_dot_ear.png`;
+        }
+        else{
+            pigElement.src = `images/pig_nodot_ear.png`;
+        }
+    }
+    else if (roll > range6 && roll <= range7){
+        pigElement.src = `images/oinker.png`;
+    }
+}
+
 
 function switchActivePlayer() {
     currentScore = 0;
