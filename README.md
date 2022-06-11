@@ -9,5 +9,6 @@ A simple game with HTML and Javascript, meant for Javascript learning and practi
 1. [x] Pigs rather than dice
 2. [ ] Ability to rename players
 3. [ ] Mobile version
-4. [ ] fix pig out logic
-5. [ ] better animations
+4. [x] fix pig out logic
+5. [ ] pig out animation
+6. [ ] better animations

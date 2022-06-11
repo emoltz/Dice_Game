@@ -126,6 +126,8 @@ function pigRoll(roll, pigDot1, pigDot2, pigElement){
 
         //check for Pig Out
         if ((pigDot1 == false && pigDot2 == true) || (pigDot1 == true && pigDot2 == false)){
+            currentScore = 0;
+            changePlayersCurrentScore();
             switchActivePlayer();
             console.log("Pig out!");
         }
