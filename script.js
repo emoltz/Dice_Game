@@ -129,6 +129,10 @@ function pigRoll(roll, pigDot1, pigDot2, pigElement){
             switchActivePlayer();
             console.log("Pig out!");
         }
+        else{
+            currentScore += 1;
+            changePlayersCurrentScore();
+        }
     }
     else if (roll > range2 && roll <= range3){
         // console.log("razorback");
@@ -138,6 +142,10 @@ function pigRoll(roll, pigDot1, pigDot2, pigElement){
         else{
             pigElement.src = `images/pig_nodot_back.png`;
         }
+        currentScore += 5;
+        changePlayersCurrentScore();
+
+
     }
     else if (roll > range3 && roll <= range4){
         // console.log("trotter");
@@ -148,6 +156,8 @@ function pigRoll(roll, pigDot1, pigDot2, pigElement){
         else{
             pigElement.src = `images/pig_nodot.png`;
         }
+        currentScore += 5;
+        changePlayersCurrentScore();
     }
     else if (roll > range4 && roll <= range5){
         // console.log("snouter");
@@ -158,6 +168,8 @@ function pigRoll(roll, pigDot1, pigDot2, pigElement){
         else{
             pigElement.src = `images/pig_nodot_nose.png`;
         }
+        currentScore += 10;
+        changePlayersCurrentScore();
     }
     else if (roll > range5 && roll <= range6){
         if(pigDot1){
@@ -167,9 +179,14 @@ function pigRoll(roll, pigDot1, pigDot2, pigElement){
         else{
             pigElement.src = `images/pig_nodot_ear.png`;
         }
+        currentScore += 15;
+        changePlayersCurrentScore();
     }
     else if (roll > range6 && roll <= range7){
         pigElement.src = `images/oinker.png`;
+        currentScore = 0;
+        changePlayersCurrentScore();
+        switchActivePlayer();
     }
 }
 
