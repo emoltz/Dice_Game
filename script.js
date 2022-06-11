@@ -41,6 +41,9 @@ const renamePlayersButton = document.querySelector('.btn--rename');
 
 //______________Dice/Pigs
 const diceElement = document.querySelector('.pigs');
+const pig1Element = document.getElementById('pig1');
+const pig2Element = document.getElementById('pig2');
+
 
 
 //______________Roll
@@ -73,17 +76,6 @@ function rollDice() {
 
 //______________PIG LOGIC
 
-//TODO turn into object
-var lookup = {
-    1: {range:[0,.349], points: null, name: "side (no dot)"},
-    2: {range: [.3491,.6511], points: null, name: "side (dot)"},
-    3: {range: [.6522, .8751], points: 5, name: "Razorback"},
-    4: {range: [.8752, .9631], points: 5, name: "Trotter"},
-    5: {range: [.9632, .9932], points: 10, name: "Snouter"},
-    6: {range: [.9933, .9960], points: 15, name: "Leaning Jowler"},
-    7: {range: [.9961, 1], points: 0, name: "Oinker!"}
-}
-
 
 function rollPigs(){
     // let min = 1;
@@ -96,9 +88,11 @@ function rollPigs(){
     //______________________ROLL 1:
     if (roll1 >= 0 && roll1 <= range1){
         console.log("no dot!");
+        pig1Element.src = `images/pig_nodot.png`;
     }
     else if (roll1 > range1 && roll1 <= range2){
         console.log("Dot!");
+        pig1Element.src = `images/pig_dot.png`;
     }
     else if (roll1 > range2 && roll1 <= range3){
         console.log("razorback");
@@ -165,11 +159,6 @@ function changeName(name, player1) {
 
 }
 
-function hidePigs() {
-
-
-}
-
 function resetScores() {
     currentScore = 0;
     currentScore_player1_element.textContent = String(currentScore);
@@ -188,7 +177,7 @@ function setPlayerNames(name1, name2) {
 
 
 function init() {
-    diceElement.classList.add('hidden')
+    // diceElement.classList.add('hidden')
     resetScores();
     activePlayer = 0;
     player1Name.classList.add('highlighted')
@@ -225,7 +214,7 @@ function hold() {
 
 //______________listeners
 newGameButton.addEventListener('click', init);
-rollButton.addEventListener('click', rollDice);
+rollButton.addEventListener('click', rollPigs);
 holdButton.addEventListener('click', hold);
 // renamePlayersButton.addEventListener('click',function(){
 //
