@@ -12,7 +12,6 @@ const range5 = .9932;
 const range6 = 1;
 
 
-
 //______________PLAYERS
 let player1Name = document.getElementById('name--0');
 let player2Name = document.getElementById('name--1');
@@ -45,9 +44,8 @@ const pig1Element = document.getElementById('pig1');
 const pig2Element = document.getElementById('pig2');
 
 
-
 //______________Roll
-function changePlayersCurrentScore(){
+function changePlayersCurrentScore() {
     document.getElementById(`current--${activePlayer}`).textContent = currentScore;
 }
 
@@ -77,36 +75,34 @@ function rollDice() {
 //______________PIG LOGIC
 
 
-function rollPigs(){
+function rollPigs() {
     // let min = 1;
     // let max = 7;
     // let roll1 = Math.round(max / (Math.random() * max + min));
     // let roll2 = Math.round(max / (Math.random() * max + min));
     let roll1 = (Math.random());
     let roll2 = (Math.random());
-    let sideCalc = Math.trunc(Math.random() *2 + 1);
+    let sideCalc = Math.trunc(Math.random() * 2 + 1);
     let roll1PigDot = false;
     let roll2PigDot = false;
-    if(playing){
-        if (sideCalc == 1){
+    if (playing) {
+        if (sideCalc == 1) {
             roll1PigDot = true;
             // console.log("Pig 1: dot!");
-        }
-        else{
+        } else {
             // console.log("Pig 1: no dot!");
         }
-        sideCalc = Math.trunc(Math.random() *2 + 1);
-        if (sideCalc == 1){
+        sideCalc = Math.trunc(Math.random() * 2 + 1);
+        if (sideCalc == 1) {
             roll2PigDot = true;
             // console.log("Pig 2: dot!");
-        }
-        else{
+        } else {
             // console.log("Pig 2: no dot!");
         }
 
         //check for Pig Out
         let pigOut = false;
-        if ((roll1PigDot == false && roll2PigDot == true) || (roll1PigDot == true && roll2PigDot == false)){
+        if ((roll1PigDot == false && roll2PigDot == true) || (roll1PigDot == true && roll2PigDot == false)) {
             currentScore = 0;
             changePlayersCurrentScore();
             switchActivePlayer();
@@ -114,86 +110,75 @@ function rollPigs(){
             pigOut = true;
         }
 
-        if (!pigOut){
-            pigRoll(roll1,roll1PigDot, pig1Element);
-            pigRoll(roll2,roll2PigDot, pig2Element);
-        }
-        else{
+        if (!pigOut) {
+            pigRoll(roll1, roll1PigDot, pig1Element);
+            pigRoll(roll2, roll2PigDot, pig2Element);
+        } else {
             pigOut = false;
         }
     }
 
 
-
 }
+
 //______________FUNCTIONS
 
-function pigRoll(roll, pigDot1, pigElement){
+function pigRoll(roll, pigDot1, pigElement) {
 
-    if (roll >= 0 && roll <= range2){
+    if (roll >= 0 && roll <= range2) {
         //on side
         // console.log("side");
 
-        if(pigDot1){
+        if (pigDot1) {
             //dot is on
             pigElement.src = `images/pig_dot.png`;
-        }
-        else{
+        } else {
             pigElement.src = `images/pig_nodot.png`;
         }
         currentScore += 1;
         changePlayersCurrentScore();
 
-    }
-    else if (roll > range2 && roll <= range3){
+    } else if (roll > range2 && roll <= range3) {
         // console.log("razorback");
-        if(pigDot1){
+        if (pigDot1) {
             pigElement.src = `images/pig_dot_back.png`;
-        }
-        else{
+        } else {
             pigElement.src = `images/pig_nodot_back.png`;
         }
         currentScore += 5;
         changePlayersCurrentScore();
 
 
-    }
-    else if (roll > range3 && roll <= range4){
+    } else if (roll > range3 && roll <= range4) {
         // console.log("trotter");
-        if(pigDot1){
+        if (pigDot1) {
             //dot is on
             pigElement.src = `images/pig_dot.png`;
-        }
-        else{
+        } else {
             pigElement.src = `images/pig_nodot.png`;
         }
         currentScore += 5;
         changePlayersCurrentScore();
-    }
-    else if (roll > range4 && roll <= range5){
+    } else if (roll > range4 && roll <= range5) {
         // console.log("snouter");
-        if(pigDot1){
+        if (pigDot1) {
             //dot is on
             pigElement.src = `images/pig_dot_nose.png`;
-        }
-        else{
+        } else {
             pigElement.src = `images/pig_nodot_nose.png`;
         }
         currentScore += 10;
         changePlayersCurrentScore();
-    }
-    else if (roll > range5 && roll <= range6){
-        if(pigDot1){
+    } else if (roll > range5 && roll <= range6) {
+        if (pigDot1) {
             //dot is on
             pigElement.src = `images/pig_dot_ear.png`;
-        }
-        else{
+        } else {
             pigElement.src = `images/pig_nodot_ear.png`;
         }
         currentScore += 15;
         changePlayersCurrentScore();
-    }
-    else if (roll > range6 && roll <= range7){
+    } else if (roll > range6 && roll <= range7) {
         pigElement.src = `images/oinker.png`;
         currentScore = 0;
         changePlayersCurrentScore();
