@@ -1,5 +1,5 @@
 # Pass the Pigs Online
-[passthepigs.io](passthepigs.io)
+[passthepigs.io](http://www.passthepigs.io)
 
 A simple game with HTML and Javascript, meant for Javascript learning and practice.
 
